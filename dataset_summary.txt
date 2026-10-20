@@ -1,0 +1,85 @@
+================================================================================
+CALIFORNIA HIGHWAY PeMS TRAFFIC DATASET INSPECTION REPORT
+Capstone Deep Learning Project - Spatial-Temporal Graph Neural Networks
+Timestamp: 2026-10-17 21:54:26
+================================================================================
+
+[DATASET: PEMS04]
+--------------------------------------------------------------------------------
+- Tensor File:             PEMS04.npz (31.43 MB)
+- Array Dimensions:        Shape: (16992, 307, 3) [Time Steps, Sensors, Features]
+  * Number of Time Steps:  16,992
+  * Number of Detectors:   307 road sensors
+  * Number of Channels:    3 features (Flow, Occupancy, Speed)
+- Data Precision & Type:   float64
+- Missing Value Count:     0 NaNs (0.0000%), 0 Infs
+- Negative Value Count:    0 (No invalid negative measurements)
+- Zero Value Count:        165,979 (1.06% of tensor)
+
+  [Temporal Horizon & Resolution]
+  - Time Interval:         5 minutes per reading
+  - Sampling Frequency:    288 intervals/day (12 steps/hour)
+  - Dataset Span:          59.0 consecutive days (1416.0 hours)
+
+  [Feature-wise Statistical Distribution]
+  Feature                        | Mean       | Std        | Min      | Median   | Max      | Zeros % 
+  -------------------------------+------------+------------+----------+----------+----------+---------
+  Flow / Volume (veh/5min)       | 211.70     | 158.07     | 0.00     | 180.00   | 919.00   | 1.59   %
+  Occupancy rate ([0, 1])        | 0.05       | 0.05       | 0.00     | 0.04     | 0.77     | 1.59   %
+  Average Speed (mph / km/h)     | 63.47      | 8.36       | 3.00     | 65.60    | 85.20    | 0.00   %
+
+  [Spatial Graph Topology & Sensor Adjacency]
+  - Graph Edge List:       PEMS04.csv (4.41 KB)
+  - Directed Edges:        340 highway segments connecting sensors
+  - Sensors in Graph:      307 unique nodes
+  - Topology Density:      0.361% (Sparsely connected road network)
+  - Distance/Cost Metric:  Mean: 410.30 m, Min: 3.2 m, Max: 2712.1 m
+
+  [Preprocessing & Deep Learning Readiness Assessment]
+  - Status:                >>> READY FOR PREPROCESSING <<<
+  - Recommended Pipeline:  1. Z-Score Standardization / MinMax Scaler per feature channel.
+                           2. Sliding-window sequence framing (e.g. 12 steps historical -> 12 steps future).
+                           3. Train/Val/Test temporal split: 70% / 10% / 20% (strictly chronological).
+                           4. Adjacency Matrix: Gaussian thresholded distance kernel A_ij = exp(-dist^2 / sigma^2).
+
+[DATASET: PEMS08]
+--------------------------------------------------------------------------------
+- Tensor File:             PEMS08.npz (17.67 MB)
+- Array Dimensions:        Shape: (17856, 170, 3) [Time Steps, Sensors, Features]
+  * Number of Time Steps:  17,856
+  * Number of Detectors:   170 road sensors
+  * Number of Channels:    3 features (Flow, Occupancy, Speed)
+- Data Precision & Type:   float64
+- Missing Value Count:     0 NaNs (0.0000%), 0 Infs
+- Negative Value Count:    0 (No invalid negative measurements)
+- Zero Value Count:        21,120 (0.23% of tensor)
+
+  [Temporal Horizon & Resolution]
+  - Time Interval:         5 minutes per reading
+  - Sampling Frequency:    288 intervals/day (12 steps/hour)
+  - Dataset Span:          62.0 consecutive days (1488.0 hours)
+
+  [Feature-wise Statistical Distribution]
+  Feature                        | Mean       | Std        | Min      | Median   | Max      | Zeros % 
+  -------------------------------+------------+------------+----------+----------+----------+---------
+  Flow / Volume (veh/5min)       | 230.68     | 146.22     | 0.00     | 215.00   | 1147.00  | 0.35   %
+  Occupancy rate ([0, 1])        | 0.07       | 0.05       | 0.00     | 0.06     | 0.90     | 0.35   %
+  Average Speed (mph / km/h)     | 63.76      | 6.65       | 3.00     | 64.90    | 82.30    | 0.00   %
+
+  [Spatial Graph Topology & Sensor Adjacency]
+  - Graph Edge List:       PEMS08.csv (3.65 KB)
+  - Directed Edges:        295 highway segments connecting sensors
+  - Sensors in Graph:      170 unique nodes
+  - Topology Density:      1.021% (Sparsely connected road network)
+  - Distance/Cost Metric:  Mean: 315.90 m, Min: 6.3 m, Max: 3274.4 m
+
+  [Preprocessing & Deep Learning Readiness Assessment]
+  - Status:                >>> READY FOR PREPROCESSING <<<
+  - Recommended Pipeline:  1. Z-Score Standardization / MinMax Scaler per feature channel.
+                           2. Sliding-window sequence framing (e.g. 12 steps historical -> 12 steps future).
+                           3. Train/Val/Test temporal split: 70% / 10% / 20% (strictly chronological).
+                           4. Adjacency Matrix: Gaussian thresholded distance kernel A_ij = exp(-dist^2 / sigma^2).
+
+================================================================================
+INSPECTION COMPLETE: All required metadata successfully logged.
+================================================================================
